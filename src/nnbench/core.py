@@ -159,6 +159,7 @@ def parametrize(
         A parametrized decorator returning the benchmark family.
     """
 
+    # TODO(nicholasjng): Return a BenchmarkFamily object.
     def decorator(fn: Callable) -> list[Benchmark]:
         benchmarks = []
         names = set()
@@ -222,6 +223,7 @@ def product(
         A parametrized decorator returning the benchmark family.
     """
 
+    # TODO(nicholasjng): Return a BenchmarkFamily object.
     def decorator(fn: Callable) -> list[Benchmark]:
         benchmarks = []
         names = set()

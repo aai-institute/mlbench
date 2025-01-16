@@ -3,7 +3,7 @@
 import copy
 import inspect
 import sys
-from collections.abc import Callable, Mapping
+from collections.abc import Callable, Iterable, Mapping
 from dataclasses import asdict, dataclass, field
 from types import MappingProxyType
 from typing import Any, TypeVar
@@ -202,3 +202,14 @@ class Benchmark:
         if not self.name:
             super().__setattr__("name", self.fn.__name__)
         super().__setattr__("interface", Interface.from_callable(self.fn, self.params))
+
+
+class BenchmarkFamily(Iterable[Benchmark]):
+    def __init__(self, fn: Callable[..., Any], params: Iterable[dict[str, Any]]):
+        self.fn = fn
+        self.params = params
+
+    def __iter__(self):
+        # TODO(nicholasjng): Yield benchmark members as currently done in
+        #  `core.{parametrize,product}`.
+        pass
